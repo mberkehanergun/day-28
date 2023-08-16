@@ -753,10 +753,11 @@ public class Main extends Application {
                         Label resultLabel = new Label("Results will show up here.");
                         TextArea taskTextArea = new TextArea();
                         Button loadReportButton = new Button("Load Report");
+                        Button backButtonToButtonScene = new Button("Back");
                         
                         VBox taskLayout = new VBox(10);
                         taskLayout.setAlignment(Pos.CENTER);
-                        taskLayout.getChildren().addAll(taskTextArea, loadReportButton, resultLabel, backButton);
+                        taskLayout.getChildren().addAll(taskTextArea, loadReportButton, resultLabel, backButtonToButtonScene);
 
                         Scene taskScene = new Scene(taskLayout, 600, 500);
                         primaryStage.setScene(taskScene);
@@ -769,16 +770,21 @@ public class Main extends Application {
                         	resultLabel.setText("Report loaded succesfully.");
                         	loadReportButton.setDisable(true);
                         });
+                        
+                        backButtonToButtonScene.setOnAction(backToButtonEvent -> {
+                            primaryStage.setScene(buttonScene); // Switch to the "Button" scene
+                        });
                     });
                     
                     task2Button.setOnAction(task1Event -> {
                         Label resultLabel = new Label("Results will show up here.");
                         TextField taskTextField = new TextField();
                         Button loadPredictionButton = new Button("Load Prediction");
+                        Button backButtonToButtonScene = new Button("Back");
                         
                         VBox taskLayout = new VBox(10);
                         taskLayout.setAlignment(Pos.CENTER);
-                        taskLayout.getChildren().addAll(taskTextField, loadPredictionButton, resultLabel, backButton);
+                        taskLayout.getChildren().addAll(taskTextField, loadPredictionButton, resultLabel, backButtonToButtonScene);
 
                         Scene taskScene = new Scene(taskLayout, 600, 500);
                         primaryStage.setScene(taskScene);
@@ -787,6 +793,10 @@ public class Main extends Application {
                         	dao.prediction(taskTextField);
                         	resultLabel.setText("Prediction loaded succesfully.");
                         	loadPredictionButton.setDisable(true);
+                        });
+                        
+                        backButtonToButtonScene.setOnAction(backToButtonEvent -> {
+                            primaryStage.setScene(buttonScene); // Switch to the "Button" scene
                         });
                     });
                     
